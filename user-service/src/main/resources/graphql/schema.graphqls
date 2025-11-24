@@ -1,0 +1,42 @@
+type Query {
+    getUserById(id: ID!): User
+    searchUserByEmail(email: String!): User
+}
+
+type Mutation {
+    createUser(input: UserInput!): User!
+    updateUser(id: ID!, input: UserInput!): User!
+    deleteUser(id: ID!): Boolean!
+    verifyUser(id: ID!): User!
+}
+
+input UserInput {
+    name: String!
+    age: Int!
+    gender: Gender!
+    email: String!
+    address: String!
+}
+
+
+type User {
+    id: ID!
+    name: String!
+    age: Int!
+    gender: Gender!
+    email: String!
+    address: String!
+    userRole: UserRole!
+    isVerified: Boolean!
+}
+
+enum Gender {
+    MALE,
+    FEMALE,
+    OTHER
+}
+
+enum UserRole {
+    ADMIN,
+    USER
+}
